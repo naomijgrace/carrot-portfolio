@@ -149,11 +149,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px;
+            padding: 20px; /* Increased padding */
             text-align: center;
             transition: opacity 0.3s ease;
             font-size: 16px;
+            line-height: 1.4; /* Adjusted line-height for better readability */
+            box-sizing: border-box; /* Ensures padding doesn't cause overflow */
+            overflow: hidden; /* Prevents overflow issues */
             border-radius: 15px;
+            word-wrap: break-word; /* Ensures text breaks correctly */
         }
         .project-card:hover .project-summary {
             opacity: 1;
