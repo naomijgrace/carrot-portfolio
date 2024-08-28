@@ -12,19 +12,28 @@
             background-color: #f0f0f0;
             color: #333;
             line-height: 1.6;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .pdf-container {
-            max-width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 100%;
             margin: 0 auto;
         }
         .pdf-item {
             margin-bottom: 20px;
+            flex-basis: 100%;
+            text-align: center;
         }
         .pdf-item iframe {
-            width: 100%;
-            height: calc(100% / 1.41); /* Maintain A4 aspect ratio */
             border: none;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
