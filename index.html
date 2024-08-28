@@ -95,10 +95,18 @@
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
         }
-        .project-card img {
+        .project-card .grid-cover {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
             width: 100%;
             height: 70%;
+        }
+        .project-card .grid-cover img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            border: 1px solid #ddd;
         }
         .project-card .project-title {
             font-size: 18px;
@@ -195,19 +203,39 @@
     <h2>Portfolio - Year 1</h2>
     <div class="grid">
         <div class="project-card" onclick="openLightbox('year1', 'Structural Studies')">
-            <img src="thumbnails/year1/Structural Studies.jpg" alt="Structural Studies Cover">
+            <div class="grid-cover">
+                <img src="year1/Structural_Studies_1.jpg" alt="Page 1">
+                <img src="year1/Structural_Studies_2.jpg" alt="Page 2">
+                <img src="year1/Structural_Studies_3.jpg" alt="Page 3">
+                <img src="year1/Structural_Studies_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Structural Studies</p>
         </div>
         <div class="project-card" onclick="openLightbox('year1', 'Wooloomooloo Wharf Redesign')">
-            <img src="thumbnails/year1/Wooloomooloo Wharf Redesign.jpg" alt="Wooloomooloo Wharf Redesign Cover">
+            <div class="grid-cover">
+                <img src="year1/Wooloomooloo_Wharf_Redesign_1.jpg" alt="Page 1">
+                <img src="year1/Wooloomooloo_Wharf_Redesign_2.jpg" alt="Page 2">
+                <img src="year1/Wooloomooloo_Wharf_Redesign_3.jpg" alt="Page 3">
+                <img src="year1/Wooloomooloo_Wharf_Redesign_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Wooloomooloo Wharf Redesign</p>
         </div>
         <div class="project-card" onclick="openLightbox('year1', 'Design Study')">
-            <img src="thumbnails/year1/Design Study.jpg" alt="Design Study Cover">
+            <div class="grid-cover">
+                <img src="year1/Design_Study_1.jpg" alt="Page 1">
+                <img src="year1/Design_Study_2.jpg" alt="Page 2">
+                <img src="year1/Design_Study_3.jpg" alt="Page 3">
+                <img src="year1/Design_Study_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Design Study</p>
         </div>
         <div class="project-card" onclick="openLightbox('year1', 'Domestic Rituals')">
-            <img src="thumbnails/year1/Domestic Rituals.jpg" alt="Domestic Rituals Cover">
+            <div class="grid-cover">
+                <img src="year1/Domestic_Rituals_1.jpg" alt="Page 1">
+                <img src="year1/Domestic_Rituals_2.jpg" alt="Page 2">
+                <img src="year1/Domestic_Rituals_3.jpg" alt="Page 3">
+                <img src="year1/Domestic_Rituals_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Domestic Rituals</p>
         </div>
     </div>
@@ -215,27 +243,57 @@
     <h2>Portfolio - Year 2</h2>
     <div class="grid">
         <div class="project-card" onclick="openLightbox('year2', 'Material Studies')">
-            <img src="thumbnails/year2/Material Studies.jpg" alt="Material Studies Cover">
+            <div class="grid-cover">
+                <img src="year2/Material_Studies_1.jpg" alt="Page 1">
+                <img src="year2/Material_Studies_2.jpg" alt="Page 2">
+                <img src="year2/Material_Studies_3.jpg" alt="Page 3">
+                <img src="year2/Material_Studies_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Material Studies</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Apparatus Design')">
-            <img src="thumbnails/year2/Apparatus Design.jpg" alt="Apparatus Design Cover">
+            <div class="grid-cover">
+                <img src="year2/Apparatus_Design_1.jpg" alt="Page 1">
+                <img src="year2/Apparatus_Design_2.jpg" alt="Page 2">
+                <img src="year2/Apparatus_Design_3.jpg" alt="Page 3">
+                <img src="year2/Apparatus_Design_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Apparatus Design</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Scanning')">
-            <img src="thumbnails/year2/Scanning.jpg" alt="Scanning Cover">
+            <div class="grid-cover">
+                <img src="year2/Scanning_1.jpg" alt="Page 1">
+                <img src="year2/Scanning_2.jpg" alt="Page 2">
+                <img src="year2/Scanning_3.jpg" alt="Page 3">
+                <img src="year2/Scanning_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Scanning</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Technical Orthographics')">
-            <img src="thumbnails/year2/Technical Orthographics.jpg" alt="Technical Orthographics Cover">
+            <div class="grid-cover">
+                <img src="year2/Technical_Orthographics_1.jpg" alt="Page 1">
+                <img src="year2/Technical_Orthographics_2.jpg" alt="Page 2">
+                <img src="year2/Technical_Orthographics_3.jpg" alt="Page 3">
+                <img src="year2/Technical_Orthographics_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Technical Orthographics</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Material Archive')">
-            <img src="thumbnails/year2/Material Archive.jpg" alt="Material Archive Cover">
+            <div class="grid-cover">
+                <img src="year2/Material_Archive_1.jpg" alt="Page 1">
+                <img src="year2/Material_Archive_2.jpg" alt="Page 2">
+                <img src="year2/Material_Archive_3.jpg" alt="Page 3">
+                <img src="year2/Material_Archive_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Material Archive</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Student Housing Project')">
-            <img src="thumbnails/year2/Student Housing Project.jpg" alt="Student Housing Project Cover">
+            <div class="grid-cover">
+                <img src="year2/Student_Housing_Project_1.jpg" alt="Page 1">
+                <img src="year2/Student_Housing_Project_2.jpg" alt="Page 2">
+                <img src="year2/Student_Housing_Project_3.jpg" alt="Page 3">
+                <img src="year2/Student_Housing_Project_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Student Housing Project</p>
         </div>
     </div>
@@ -243,15 +301,30 @@
     <h2>Portfolio - Year 3</h2>
     <div class="grid">
         <div class="project-card" onclick="openLightbox('year3', 'School Design')">
-            <img src="thumbnails/year3/School Design.jpg" alt="School Design Cover">
+            <div class="grid-cover">
+                <img src="year3/School_Design_1.jpg" alt="Page 1">
+                <img src="year3/School_Design_2.jpg" alt="Page 2">
+                <img src="year3/School_Design_3.jpg" alt="Page 3">
+                <img src="year3/School_Design_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">School Design</p>
         </div>
         <div class="project-card" onclick="openLightbox('year3', 'Site Master Planning')">
-            <img src="thumbnails/year3/Site Master Planning.jpg" alt="Site Master Planning Cover">
+            <div class="grid-cover">
+                <img src="year3/Site_Master_Planning_1.jpg" alt="Page 1">
+                <img src="year3/Site_Master_Planning_2.jpg" alt="Page 2">
+                <img src="year3/Site_Master_Planning_3.jpg" alt="Page 3">
+                <img src="year3/Site_Master_Planning_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Site Master Planning</p>
         </div>
         <div class="project-card" onclick="openLightbox('year3', 'Entertainment Complex')">
-            <img src="thumbnails/year3/Entertainment Complex.jpg" alt="Entertainment Complex Cover">
+            <div class="grid-cover">
+                <img src="year3/Entertainment_Complex_1.jpg" alt="Page 1">
+                <img src="year3/Entertainment_Complex_2.jpg" alt="Page 2">
+                <img src="year3/Entertainment_Complex_3.jpg" alt="Page 3">
+                <img src="year3/Entertainment_Complex_4.jpg" alt="Page 4">
+            </div>
             <p class="project-title">Entertainment Complex</p>
         </div>
     </div>
@@ -285,6 +358,7 @@
 
 </body>
 </html>
+
 
 
 
