@@ -14,7 +14,6 @@
             color: #333;
             line-height: 1.6;
             transition: background-color 0.5s ease;
-            background-image: url('path-to-subtle-pattern.png'); /* Example subtle background pattern */
             background-size: cover;
         }
         header {
@@ -137,6 +136,27 @@
             border: none;
             border-radius: 15px 15px 0 0;
             overflow-y: scroll;
+        }
+        .project-summary {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-opaque background */
+            color: white;
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            text-align: center;
+            transition: opacity 0.3s ease;
+            font-size: 16px;
+            border-radius: 15px;
+        }
+        .project-card:hover .project-summary {
+            opacity: 1;
         }
         .project-title {
             font-size: 20px;
@@ -276,18 +296,22 @@
     <div class="grid">
         <div class="project-card" onclick="openLightbox('year1', 'Structural_Studies')">
             <iframe src="year1/Structural_Studies_portfolio.pdf"></iframe>
+            <div class="project-summary">This project explores innovative structural designs and materials, aiming to enhance sustainability.</div>
             <p class="project-title">Structural Studies</p>
         </div>
         <div class="project-card" onclick="openLightbox('year1', 'Wooloomooloo_Wharf_Redesign')">
             <iframe src="year1/Wooloomooloo_Wharf_Redesign_portfolio.pdf"></iframe>
+            <div class="project-summary">Redesign of the Wooloomooloo Wharf focusing on modern aesthetics and functionality.</div>
             <p class="project-title">Wooloomooloo Wharf Redesign</p>
         </div>
         <div class="project-card" onclick="openLightbox('year1', 'Design_Study')">
             <iframe src="year1/Design_Study_portfolio.pdf"></iframe>
+            <div class="project-summary">A study of design principles applied to various architectural challenges.</div>
             <p class="project-title">Design Study</p>
         </div>
         <div class="project-card" onclick="openLightbox('year1', 'Domestic_Rituals')">
             <iframe src="year1/Domestic_Rituals_portfolio.pdf"></iframe>
+            <div class="project-summary">An exploration of domestic spaces and how rituals shape architectural design.</div>
             <p class="project-title">Domestic Rituals</p>
         </div>
     </div>
@@ -296,26 +320,32 @@
     <div class="grid">
         <div class="project-card" onclick="openLightbox('year2', 'Material_Studies')">
             <iframe src="year2/Material_Studies_portfolio.pdf"></iframe>
+            <div class="project-summary">An in-depth study of materials used in modern architecture and their applications.</div>
             <p class="project-title">Material Studies</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Apparatus_Design')">
             <iframe src="year2/Apparatus_Design_portfolio.pdf"></iframe>
+            <div class="project-summary">Designing functional apparatus that blend seamlessly into architectural spaces.</div>
             <p class="project-title">Apparatus Design</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Scanning')">
             <iframe src="year2/Scanning_portfolio.pdf"></iframe>
+            <div class="project-summary">Exploring scanning techniques for capturing and analyzing architectural structures.</div>
             <p class="project-title">Scanning</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Technical_Orthographics')">
             <iframe src="year2/Technical_Orthographics_portfolio.pdf"></iframe>
+            <div class="project-summary">Technical orthographic drawings showcasing detailed architectural designs.</div>
             <p class="project-title">Technical Orthographics</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Material_Archive')">
             <iframe src="year2/Material_Archive_portfolio.pdf"></iframe>
+            <div class="project-summary">A comprehensive archive of materials and their use in architectural projects.</div>
             <p class="project-title">Material Archive</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Student_Housing_Project')">
             <iframe src="year2/Student_Housing_Project_portfolio.pdf"></iframe>
+            <div class="project-summary">Designing student housing with a focus on community and sustainability.</div>
             <p class="project-title">Student Housing Project</p>
         </div>
     </div>
@@ -324,14 +354,17 @@
     <div class="grid">
         <div class="project-card" onclick="openLightbox('year3', 'School_Design')">
             <iframe src="year3/School_Design_portfolio.pdf"></iframe>
+            <div class="project-summary">Innovative school design that integrates modern teaching methodologies.</div>
             <p class="project-title">School Design</p>
         </div>
         <div class="project-card" onclick="openLightbox('year3', 'Site_Master_Planning')">
             <iframe src="year3/Site_Master_Planning_portfolio.pdf"></iframe>
+            <div class="project-summary">Master planning for a large site, balancing urban and natural environments.</div>
             <p class="project-title">Site Master Planning</p>
         </div>
         <div class="project-card" onclick="openLightbox('year3', 'Entertainment_Complex')">
             <iframe src="year3/Entertainment_Complex_portfolio.pdf"></iframe>
+            <div class="project-summary">Designing a modern entertainment complex with multiple facilities.</div>
             <p class="project-title">Entertainment Complex</p>
         </div>
     </div>
