@@ -71,55 +71,47 @@
             padding-bottom: 10px;
         }
 
-        /* Portfolio Grid */
-        .pdf-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .pdf-item {
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .pdf-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-        }
-        .pdf-item p.title {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 15px 0 10px;
-            padding: 0 20px;
-            color: #222;
-        }
-        .pdf-item p.description {
-            font-size: 14px;
-            color: #555;
-            padding: 0 20px;
-            margin-bottom: 15px;
-        }
-        .pdf-item iframe {
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
             width: 100%;
-            height: 400px;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-item {
+            min-width: 100%;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item iframe {
+            width: 100%;
+            height: 500px;
             border: none;
-            border-bottom: 1px solid #ddd;
         }
-        .pdf-item a {
-            display: block;
-            text-align: center;
-            padding: 12px 0;
-            background-color: #333;
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-controls button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
             color: white;
-            text-decoration: none;
-            font-size: 16px;
-            border-top: 1px solid #ddd;
-            transition: background-color 0.3s ease;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
         }
-        .pdf-item a:hover {
-            background-color: #555;
+        .carousel-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
         footer {
@@ -141,8 +133,8 @@
                 height: 2px;
                 margin: 10px 0;
             }
-            .pdf-row {
-                grid-template-columns: 1fr;
+            .carousel-item iframe {
+                height: 300px;
             }
         }
     </style>
@@ -166,25 +158,44 @@
 
 <section id="portfolio">
     <h2>Portfolio</h2>
-    <!-- Year 1 Portfolio -->
+
+    <!-- Year 1 Portfolio Carousel -->
     <div class="pdf-item">
         <p class="title">Year 1</p>
         <p class="description">This project focused on residential design, exploring sustainable materials and innovative space use.</p>
-        <div class="pdf-row" id="year1"></div>
+        <div class="carousel" id="carousel-year1">
+            <div class="carousel-inner"></div>
+            <div class="carousel-controls">
+                <button onclick="prevSlide('carousel-year1')">&lt;</button>
+                <button onclick="nextSlide('carousel-year1')">&gt;</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Year 2 Portfolio -->
+    <!-- Year 2 Portfolio Carousel -->
     <div class="pdf-item">
         <p class="title">Year 2</p>
         <p class="description">A comprehensive study in urban planning, emphasizing community-focused public spaces.</p>
-        <div class="pdf-row" id="year2"></div>
+        <div class="carousel" id="carousel-year2">
+            <div class="carousel-inner"></div>
+            <div class="carousel-controls">
+                <button onclick="prevSlide('carousel-year2')">&lt;</button>
+                <button onclick="nextSlide('carousel-year2')">&gt;</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Year 3 Portfolio -->
+    <!-- Year 3 Portfolio Carousel -->
     <div class="pdf-item">
         <p class="title">Year 3</p>
         <p class="description">This final project dealt with commercial architecture, integrating modern aesthetics with functionality.</p>
-        <div class="pdf-row" id="year3"></div>
+        <div class="carousel" id="carousel-year3">
+            <div class="carousel-inner"></div>
+            <div class="carousel-controls">
+                <button onclick="prevSlide('carousel-year3')">&lt;</button>
+                <button onclick="nextSlide('carousel-year3')">&gt;</button>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -194,22 +205,48 @@
 
 <script>
     const portfolios = ['year1', 'year2', 'year3'];
-    
+
     portfolios.forEach(portfolio => {
-        const container = document.getElementById(portfolio);
+        const carouselInner = document.querySelector(`#carousel-${portfolio} .carousel-inner`);
         for (let i = 1; i <= 10; i++) { // Adjust the number 10 to the max number of pages you have
             const fileName = `${portfolio}_${i}.pdf`;
-            const iframe = document.createElement('iframe');
-            iframe.src = `${portfolio}/${fileName}`;
-            iframe.title = `${portfolio} Page ${i}`;
-            iframe.className = 'pdf-item';
-            container.appendChild(iframe);
+            const carouselItem = document.createElement('div');
+            carouselItem.className = 'carousel-item';
+            carouselItem.innerHTML = `<iframe src="${portfolio}/${fileName}" title="${portfolio} Page ${i}"></iframe>`;
+            carouselInner.appendChild(carouselItem);
         }
+        // Set the first item as active
+        carouselInner.firstElementChild.classList.add('active');
     });
+
+    function nextSlide(carouselId) {
+        const carouselInner = document.querySelector(`#${carouselId} .carousel-inner`);
+        const activeItem = carouselInner.querySelector('.active');
+        let nextItem = activeItem.nextElementSibling;
+        if (!nextItem) {
+            nextItem = carouselInner.firstElementChild;
+        }
+        activeItem.classList.remove('active');
+        nextItem.classList.add('active');
+        carouselInner.style.transform = `translateX(-${nextItem.offsetLeft}px)`;
+    }
+
+    function prevSlide(carouselId) {
+        const carouselInner = document.querySelector(`#${carouselId} .carousel-inner`);
+        const activeItem = carouselInner.querySelector('.active');
+        let prevItem = activeItem.previousElementSibling;
+        if (!prevItem) {
+            prevItem = carouselInner.lastElementChild;
+        }
+        activeItem.classList.remove('active');
+        prevItem.classList.add('active');
+        carouselInner.style.transform = `translateX(-${prevItem.offsetLeft}px)`;
+    }
 </script>
 
 </body>
 </html>
+
 
 
 
