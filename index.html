@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaron Saggu - Architectural Portfolio</title>
+    <title>Aaron Saggu - Architecture Portfolio</title>
     <style>
         /* General Styles */
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background: linear-gradient(120deg, #f0f0f0 0%, #ffffff 100%);
             color: #333;
             line-height: 1.6;
+            transition: background-color 0.5s ease;
         }
         header {
             background-color: #1a1a1a;
@@ -20,17 +21,26 @@
             padding: 20px 10px;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        header.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
         header h1 {
             font-size: 32px;
             margin: 5px 0;
             letter-spacing: 2px;
+            transition: color 0.3s ease;
         }
         header p {
             font-size: 18px;
             margin: 5px 0;
             font-weight: 300;
             color: #bbb;
+            transition: color 0.3s ease;
         }
         header .contact-info {
             margin-top: 10px;
@@ -52,7 +62,7 @@
         }
         header .contact-info a:hover {
             background-color: #555;
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         header .separator {
             display: inline-block;
@@ -68,10 +78,14 @@
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            transition-delay: 0.5s;
         }
-        section:hover {
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        section.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
         section h2 {
             font-size: 28px;
@@ -81,6 +95,7 @@
             padding-bottom: 10px;
             font-weight: 400;
             letter-spacing: 1px;
+            transition: color 0.3s ease;
         }
 
         /* Grid Layout Styles */
@@ -162,6 +177,13 @@
             overflow: hidden;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             background-color: white;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .lightbox.active .lightbox-content {
+            transform: scale(1);
+            opacity: 1;
         }
         .lightbox iframe {
             width: 100%;
@@ -195,6 +217,14 @@
             margin-top: 40px;
             font-size: 14px;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: 1s;
+        }
+        footer.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive Design */
@@ -318,20 +348,28 @@
         const iframe = document.getElementById('lightboxIframe');
         iframe.src = `${year}/${project}_portfolio.pdf`;
         lightbox.style.display = 'flex';
+        setTimeout(() => {
+            lightbox.classList.add('active');
+        }, 10); // Delay to trigger transition
     }
 
     function closeLightbox() {
         const lightbox = document.getElementById('lightbox');
-        lightbox.style.display = 'none';
-        const iframe = document.getElementById('lightboxIframe');
-        iframe.src = ''; // Clear the iframe source when closing
+        lightbox.classList.remove('active');
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+            const iframe = document.getElementById('lightboxIframe');
+            iframe.src = ''; // Clear the iframe source when closing
+        }, 500); // Match with transition duration
     }
+
+    window.addEventListener('load', () => {
+        document.querySelectorAll('header, section, footer').forEach(el => el.classList.add('loaded'));
+    });
 </script>
 
 </body>
 </html>
-
-
 
 
 
