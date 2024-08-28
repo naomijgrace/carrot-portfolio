@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year 2 - Full Screen</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        .pdf-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .pdf-item {
+            margin-bottom: 20px;
+        }
+        .pdf-item iframe {
+            width: 100%;
+            height: calc(100% / 1.41); /* Maintain A4 aspect ratio */
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Year 2 - Full Screen</h1>
+<div class="pdf-container">
+    <div class="pdf-item"><iframe src="year2/29_portfolio.pdf" title="Year 2 - Page 29"></iframe></div>
+    <div class="pdf-item"><iframe src="year2/30_portfolio.pdf" title="Year 2 - Page 30"></iframe></div>
+    <div class="pdf-item"><iframe src="year2/31_portfolio.pdf" title="Year 2 - Page 31"></iframe></div>
+    <!-- Add more pages as needed -->
+    <div class="pdf-item"><iframe src="year2/57_portfolio.pdf" title="Year 2 - Page 57"></iframe></div>
+</div>
+
+</body>
+</html>
