@@ -32,7 +32,9 @@
         header .contact-info {
             margin-top: 20px;
             font-size: 16px;
-            display: inline-block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         header .contact-info a {
             color: white;
@@ -52,7 +54,6 @@
             height: 20px;
             background-color: #666;
             margin: 0 10px;
-            vertical-align: middle;
         }
 
         section {
@@ -73,7 +74,7 @@
         /* Portfolio Grid */
         .pdf-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
         .pdf-item {
@@ -102,7 +103,7 @@
         }
         .pdf-item iframe {
             width: 100%;
-            height: 250px;
+            height: 400px;
             border: none;
             border-bottom: 1px solid #ddd;
         }
@@ -132,6 +133,14 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            header .contact-info {
+                flex-direction: column;
+            }
+            header .separator {
+                width: 100%;
+                height: 2px;
+                margin: 10px 0;
+            }
             .pdf-row {
                 grid-template-columns: 1fr;
             }
@@ -157,25 +166,25 @@
 
 <section id="portfolio">
     <h2>Portfolio</h2>
-    <div class="pdf-row">
-        <div class="pdf-item">
-            <p class="title">Year 1</p>
-            <p class="description">This project focused on residential design, exploring sustainable materials and innovative space use.</p>
-            <iframe src="year1.pdf" title="Year 1"></iframe>
-            <a href="year1.pdf" target="_blank">View Full Screen</a>
-        </div>
-        <div class="pdf-item">
-            <p class="title">Year 2</p>
-            <p class="description">A comprehensive study in urban planning, emphasizing community-focused public spaces.</p>
-            <iframe src="year2.pdf" title="Year 2"></iframe>
-            <a href="year2.pdf" target="_blank">View Full Screen</a>
-        </div>
-        <div class="pdf-item">
-            <p class="title">Year 3</p>
-            <p class="description">This final project dealt with commercial architecture, integrating modern aesthetics with functionality.</p>
-            <iframe src="year3.pdf" title="Year 3"></iframe>
-            <a href="year3.pdf" target="_blank">View Full Screen</a>
-        </div>
+    <!-- Year 1 Portfolio -->
+    <div class="pdf-item">
+        <p class="title">Year 1</p>
+        <p class="description">This project focused on residential design, exploring sustainable materials and innovative space use.</p>
+        <div class="pdf-row" id="year1"></div>
+    </div>
+
+    <!-- Year 2 Portfolio -->
+    <div class="pdf-item">
+        <p class="title">Year 2</p>
+        <p class="description">A comprehensive study in urban planning, emphasizing community-focused public spaces.</p>
+        <div class="pdf-row" id="year2"></div>
+    </div>
+
+    <!-- Year 3 Portfolio -->
+    <div class="pdf-item">
+        <p class="title">Year 3</p>
+        <p class="description">This final project dealt with commercial architecture, integrating modern aesthetics with functionality.</p>
+        <div class="pdf-row" id="year3"></div>
     </div>
 </section>
 
@@ -183,7 +192,24 @@
     <p>&copy; 2024 Your Name. All rights reserved.</p>
 </footer>
 
+<script>
+    const portfolios = ['year1', 'year2', 'year3'];
+    
+    portfolios.forEach(portfolio => {
+        const container = document.getElementById(portfolio);
+        for (let i = 1; i <= 10; i++) { // Adjust the number 10 to the max number of pages you have
+            const fileName = `${portfolio}_${i}.pdf`;
+            const iframe = document.createElement('iframe');
+            iframe.src = `${portfolio}/${fileName}`;
+            iframe.title = `${portfolio} Page ${i}`;
+            iframe.className = 'pdf-item';
+            container.appendChild(iframe);
+        }
+    });
+</script>
+
 </body>
 </html>
+
 
 
