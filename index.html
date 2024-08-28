@@ -71,11 +71,46 @@
             padding-bottom: 10px;
         }
 
+        /* Flexbox Layout for Carousels */
+        .carousel-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .pdf-item {
+            flex: 1;
+            min-width: 300px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .pdf-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        .pdf-item .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0 10px;
+            padding: 0 20px;
+            color: #222;
+        }
+        .pdf-item .description {
+            font-size: 14px;
+            color: #555;
+            padding: 0 20px;
+            margin-bottom: 15px;
+        }
+
         /* Carousel Styles */
         .carousel {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 100%;
             margin: 0 auto;
             overflow: hidden;
             border-radius: 10px;
@@ -91,7 +126,7 @@
         }
         .carousel-item iframe {
             width: 100%;
-            height: 500px;
+            height: 400px;
             border: none;
         }
         .carousel-controls {
@@ -112,6 +147,21 @@
         }
         .carousel-controls button:hover {
             background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .full-screen-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .full-screen-link:hover {
+            background-color: #555;
         }
 
         footer {
@@ -136,6 +186,9 @@
             .carousel-item iframe {
                 height: 300px;
             }
+            .carousel-container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -158,43 +211,47 @@
 
 <section id="portfolio">
     <h2>Portfolio</h2>
-
-    <!-- Year 1 Portfolio Carousel -->
-    <div class="pdf-item">
-        <p class="title">Year 1</p>
-        <p class="description">This project focused on residential design, exploring sustainable materials and innovative space use.</p>
-        <div class="carousel" id="carousel-year1">
-            <div class="carousel-inner"></div>
-            <div class="carousel-controls">
-                <button onclick="prevSlide('carousel-year1')">&lt;</button>
-                <button onclick="nextSlide('carousel-year1')">&gt;</button>
+    <div class="carousel-container">
+        <!-- Year 1 Portfolio Carousel -->
+        <div class="pdf-item">
+            <p class="title">Year 1</p>
+            <p class="description">This project focused on residential design, exploring sustainable materials and innovative space use.</p>
+            <div class="carousel" id="carousel-year1">
+                <div class="carousel-inner"></div>
+                <div class="carousel-controls">
+                    <button onclick="prevSlide('carousel-year1')">&lt;</button>
+                    <button onclick="nextSlide('carousel-year1')">&gt;</button>
+                </div>
             </div>
+            <a href="year1-fullscreen.html" class="full-screen-link" target="_blank">View Full Screen</a>
         </div>
-    </div>
 
-    <!-- Year 2 Portfolio Carousel -->
-    <div class="pdf-item">
-        <p class="title">Year 2</p>
-        <p class="description">A comprehensive study in urban planning, emphasizing community-focused public spaces.</p>
-        <div class="carousel" id="carousel-year2">
-            <div class="carousel-inner"></div>
-            <div class="carousel-controls">
-                <button onclick="prevSlide('carousel-year2')">&lt;</button>
-                <button onclick="nextSlide('carousel-year2')">&gt;</button>
+        <!-- Year 2 Portfolio Carousel -->
+        <div class="pdf-item">
+            <p class="title">Year 2</p>
+            <p class="description">A comprehensive study in urban planning, emphasizing community-focused public spaces.</p>
+            <div class="carousel" id="carousel-year2">
+                <div class="carousel-inner"></div>
+                <div class="carousel-controls">
+                    <button onclick="prevSlide('carousel-year2')">&lt;</button>
+                    <button onclick="nextSlide('carousel-year2')">&gt;</button>
+                </div>
             </div>
+            <a href="year2-fullscreen.html" class="full-screen-link" target="_blank">View Full Screen</a>
         </div>
-    </div>
 
-    <!-- Year 3 Portfolio Carousel -->
-    <div class="pdf-item">
-        <p class="title">Year 3</p>
-        <p class="description">This final project dealt with commercial architecture, integrating modern aesthetics with functionality.</p>
-        <div class="carousel" id="carousel-year3">
-            <div class="carousel-inner"></div>
-            <div class="carousel-controls">
-                <button onclick="prevSlide('carousel-year3')">&lt;</button>
-                <button onclick="nextSlide('carousel-year3')">&gt;</button>
+        <!-- Year 3 Portfolio Carousel -->
+        <div class="pdf-item">
+            <p class="title">Year 3</p>
+            <p class="description">This final project dealt with commercial architecture, integrating modern aesthetics with functionality.</p>
+            <div class="carousel" id="carousel-year3">
+                <div class="carousel-inner"></div>
+                <div class="carousel-controls">
+                    <button onclick="prevSlide('carousel-year3')">&lt;</button>
+                    <button onclick="nextSlide('carousel-year3')">&gt;</button>
+                </div>
             </div>
+            <a href="year3-fullscreen.html" class="full-screen-link" target="_blank">View Full Screen</a>
         </div>
     </div>
 </section>
@@ -204,20 +261,24 @@
 </footer>
 
 <script>
-    const portfolios = ['year1', 'year2', 'year3'];
+    const portfolios = {
+        'year1': { start: 1, end: 28 },
+        'year2': { start: 29, end: 57 },
+        'year3': { start: 58, end: 67 }
+    };
 
-    portfolios.forEach(portfolio => {
+    for (const [portfolio, range] of Object.entries(portfolios)) {
         const carouselInner = document.querySelector(`#carousel-${portfolio} .carousel-inner`);
-        for (let i = 1; i <= 10; i++) { // Adjust the number 10 to the max number of pages you have
-            const fileName = `${portfolio}_${i}.pdf`;
+        for (let i = range.start; i <= range.end; i++) {
+            const fileName = `${portfolio}/${i}_portfolio.pdf`;
             const carouselItem = document.createElement('div');
             carouselItem.className = 'carousel-item';
-            carouselItem.innerHTML = `<iframe src="${portfolio}/${fileName}" title="${portfolio} Page ${i}"></iframe>`;
+            carouselItem.innerHTML = `<iframe src="${fileName}" title="${portfolio} Page ${i}"></iframe>`;
             carouselInner.appendChild(carouselItem);
         }
         // Set the first item as active
         carouselInner.firstElementChild.classList.add('active');
-    });
+    }
 
     function nextSlide(carouselId) {
         const carouselInner = document.querySelector(`#${carouselId} .carousel-inner`);
@@ -246,6 +307,7 @@
 
 </body>
 </html>
+
 
 
 
