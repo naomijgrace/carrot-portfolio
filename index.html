@@ -76,31 +76,43 @@
             margin: 0 10px;
         }
 
-        /* Update for the section styling */
+        /* General fade-in and slide-in animation for sections */
+        @keyframes fadeInSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         section {
-            margin: 50px 20px; /* Increased margin to create more space between sections */
+            margin: 50px 20px;
             padding: 40px;
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
             opacity: 0;
             transform: translateY(50px);
-            transition-delay: 0.5s;
-            border-left: 6px solid #333; /* Added subtle left border for visual separation */
-            background-image: url('path-to-subtle-pattern.png'); /* Optional: Add a subtle background pattern */
+            animation: fadeInSlideUp 1s ease forwards;
+            border-left: 6px solid #333;
             background-size: cover;
+            animation-delay: 0.5s; /* Delay to match header animation */
         }
         
         section.loaded {
+            animation-delay: 0s; /* Removes delay when class 'loaded' is added */
+            animation: none; /* No animation when loaded */
             opacity: 1;
             transform: translateY(0);
         }
         
-        /* Update for the h2 styling */
+        /* Styling and animation for section titles (h2) */
         section h2 {
-            font-size: 30px; /* Slightly larger font for year titles */
-            margin-bottom: 30px; /* Increased margin below titles */
+            font-size: 30px;
+            margin-bottom: 30px;
             color: #222;
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 10px;
@@ -111,8 +123,18 @@
             -webkit-background-clip: text;
             color: transparent;
             transition: color 0.3s ease;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: fadeInSlideUp 1s ease forwards;
+            animation-delay: 0.8s; /* Slight delay for the title to appear after section */
         }
-
+        
+        section.loaded h2 {
+            animation: none;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
 
         /* Grid Layout Styles */
         .grid {
