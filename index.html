@@ -87,6 +87,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 20px;
+            position: relative;
         }
         .pdf-item:hover {
             transform: translateY(-5px);
@@ -123,6 +124,7 @@
         .carousel-item {
             min-width: 100%;
             transition: transform 0.5s ease;
+            position: relative;
         }
         .carousel-item iframe {
             width: 100%;
@@ -144,6 +146,7 @@
             padding: 10px;
             cursor: pointer;
             border-radius: 50%;
+            transition: background-color 0.3s ease;
         }
         .carousel-controls button:hover {
             background-color: rgba(0, 0, 0, 0.8);
@@ -171,6 +174,46 @@
             padding: 20px;
             margin-top: 40px;
             font-size: 14px;
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #fff;
+            color: #333;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        .lightbox-close:hover {
+            background-color: #ddd;
         }
 
         /* Responsive Design */
@@ -223,7 +266,7 @@
                     <button onclick="nextSlide('carousel-year1')">&gt;</button>
                 </div>
             </div>
-            <a href="year1-fullscreen.html" class="full-screen-link" target="_blank">View Full Screen</a>
+            <a href="javascript:void(0)" class="full-screen-link" onclick="openLightbox('year1', 1)">View Full Screen</a>
         </div>
 
         <!-- Year 2 Portfolio Carousel -->
@@ -237,7 +280,7 @@
                     <button onclick="nextSlide('carousel-year2')">&gt;</button>
                 </div>
             </div>
-            <a href="year2-fullscreen.html" class="full-screen-link" target="_blank">View Full Screen</a>
+            <a href="javascript:void(0)" class="full-screen-link" onclick="openLightbox('year2', 29)">View Full Screen</a>
         </div>
 
         <!-- Year 3 Portfolio Carousel -->
@@ -251,7 +294,7 @@
                     <button onclick="nextSlide('carousel-year3')">&gt;</button>
                 </div>
             </div>
-            <a href="year3-fullscreen.html" class="full-screen-link" target="_blank">View Full Screen</a>
+            <a href="javascript:void(0)" class="full-screen-link" onclick="openLightbox('year3', 58)">View Full Screen</a>
         </div>
     </div>
 </section>
@@ -259,6 +302,14 @@
 <footer>
     <p>&copy; 2024 Aaron Saggu. All rights reserved.</p>
 </footer>
+
+<!-- Lightbox Container -->
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <iframe id="lightboxIframe" src="" title="Full Screen View"></iframe>
+    </div>
+</div>
 
 <script>
     const portfolios = {
@@ -303,11 +354,22 @@
         prevItem.classList.add('active');
         carouselInner.style.transform = `translateX(-${prevItem.offsetLeft}px)`;
     }
+
+    function openLightbox(portfolio, page) {
+        const lightbox = document.getElementById('lightbox');
+        const iframe = document.getElementById('lightboxIframe');
+        iframe.src = `${portfolio}/${page}_portfolio.pdf`;
+        lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.style.display = 'none';
+    }
 </script>
 
 </body>
 </html>
-
 
 
 
