@@ -262,14 +262,14 @@
 
 <script>
     const portfolios = {
-        'year1': { start: 1, end: 28 },
-        'year2': { start: 29, end: 57 },
-        'year3': { start: 58, end: 67 }
+        'year1': [1, 2, 3],
+        'year2': [29, 30, 31],
+        'year3': [58, 59, 60]
     };
 
-    for (const [portfolio, range] of Object.entries(portfolios)) {
+    for (const [portfolio, pages] of Object.entries(portfolios)) {
         const carouselInner = document.querySelector(`#carousel-${portfolio} .carousel-inner`);
-        for (let i = range.start; i <= range.end; i++) {
+        for (let i of pages) {
             const fileName = `${portfolio}/${i}_portfolio.pdf`;
             const carouselItem = document.createElement('div');
             carouselItem.className = 'carousel-item';
