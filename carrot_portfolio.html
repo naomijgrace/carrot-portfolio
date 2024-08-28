@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Architecture Portfolio</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #222;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        header .contact-info {
+            margin-top: 20px;
+            font-size: 16px;
+            display: inline-block;
+        }
+        header .contact-info a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #444;
+            transition: background-color 0.3s ease;
+        }
+        header .contact-info a:hover {
+            background-color: #555;
+        }
+        header .separator {
+            display: inline-block;
+            width: 2px;
+            height: 20px;
+            background-color: #666;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+
+        section {
+            margin: 40px 20px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #222;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        /* Portfolio Grid */
+        .pdf-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .pdf-item {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pdf-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        .pdf-item p.title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0 10px;
+            padding: 0 20px;
+            color: #222;
+        }
+        .pdf-item p.description {
+            font-size: 14px;
+            color: #555;
+            padding: 0 20px;
+            margin-bottom: 15px;
+        }
+        .pdf-item iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+        }
+        .pdf-item a {
+            display: block;
+            text-align: center;
+            padding: 12px 0;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            border-top: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+        }
+        .pdf-item a:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .pdf-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Your Name</h1>
+    <p>Architecture Portfolio</p>
+    <div class="contact-info">
+        <a href="mailto:your.email@example.com">your.email@example.com</a>
+        <span class="separator"></span>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn Profile</a>
+    </div>
+</header>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p>This section will contain a brief bio about your journey in architecture, your passion, and your key achievements during university.</p>
+</section>
+
+<section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="pdf-row">
+        <div class="pdf-item">
+            <p class="title">Year 1</p>
+            <p class="description">This project focused on residential design, exploring sustainable materials and innovative space use.</p>
+            <iframe src="year1.pdf" title="Year 1"></iframe>
+            <a href="year1.pdf" target="_blank">View Full Screen</a>
+        </div>
+        <div class="pdf-item">
+            <p class="title">Year 2</p>
+            <p class="description">A comprehensive study in urban planning, emphasizing community-focused public spaces.</p>
+            <iframe src="year2.pdf" title="Year 2"></iframe>
+            <a href="year2.pdf" target="_blank">View Full Screen</a>
+        </div>
+        <div class="pdf-item">
+            <p class="title">Year 3</p>
+            <p class="description">This final project dealt with commercial architecture, integrating modern aesthetics with functionality.</p>
+            <iframe src="year3.pdf" title="Year 3"></iframe>
+            <a href="year3.pdf" target="_blank">View Full Screen</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Your Name. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+
+
