@@ -19,9 +19,14 @@
         header {
             background-color: #1a1a1a;
             color: white;
-            padding: 20px 10px;
+            padding: 10px 20px; /* Condensed header */
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
             opacity: 0;
             transform: translateY(-50px);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -31,69 +36,65 @@
             transform: translateY(0);
         }
         header h1 {
-            font-size: 32px;
-            margin: 5px 0;
-            letter-spacing: 2px;
+            font-size: 28px;
+            margin: 0;
+            letter-spacing: 1px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             transition: color 0.3s ease;
         }
         header p {
-            font-size: 18px;
-            margin: 5px 0;
+            font-size: 14px;
+            margin: 0;
             font-weight: 300;
             color: #bbb;
             transition: color 0.3s ease;
         }
         header .contact-info {
-            margin-top: 10px;
-            font-size: 14px;
+            font-size: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px; /* Adjusted gap for more compact spacing */
+            flex-direction: row;
         }
         header .contact-info a {
             color: white;
             text-decoration: none;
-            padding: 8px 20px;
-            border-radius: 30px;
+            padding: 6px 12px;
+            border-radius: 20px;
             background-color: #333;
             transition: background-color 0.3s ease, transform 0.3s ease;
             display: inline-block;
             border: 2px solid transparent;
         }
-        header .contact-info a:hover {
-            background-color: #555;
-            transform: scale(1.1);
-            border: 2px solid #777;
-        }
         header .separator {
-            display: inline-block;
-            width: 2px;
+            width: 1px; /* Slimmed down the separator */
             height: 15px;
             background-color: #666;
-            margin: 0 10px;
         }
 
         section {
-            margin: 30px 20px;
+            margin: 50px 20px;
             padding: 40px;
             background-color: white;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
             opacity: 0;
             transform: translateY(50px);
-            transition-delay: 0.5s;
+            animation: fadeInSlideUp 1s ease forwards;
+            border-left: 6px solid #333; /* Subtle left border for separation */
+            background-size: cover;
+            animation-delay: 0.5s;
         }
+
         section.loaded {
             opacity: 1;
             transform: translateY(0);
         }
+
         section h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 30px;
+            margin-bottom: 30px;
             color: #222;
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 10px;
@@ -113,7 +114,7 @@
         .project-card {
             width: 300px;
             height: 400px;
-            background-color: #f9f9f9; /* Solid background */
+            background-color: #f9f9f9;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -128,14 +129,17 @@
         .project-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-            background-color: #ededed; /* Slightly darker solid color on hover */
+            background-color: #ededed;
         }
-        .project-card iframe {
+        .project-cover {
             width: 100%;
             height: 100%;
-            border: none;
+            object-fit: cover;
             border-radius: 15px 15px 0 0;
-            overflow-y: scroll;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover .project-cover {
+            transform: scale(1.05);
         }
         .project-summary {
             position: absolute;
@@ -143,23 +147,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6); /* Semi-opaque background */
+            background-color: rgba(0, 0, 0, 0.6);
             color: white;
             opacity: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px; /* Increased padding */
+            padding: 20px;
             text-align: center;
             transition: opacity 0.3s ease;
             font-size: 16px;
-            line-height: 1.4; /* Adjusted line-height for better readability */
-            box-sizing: border-box; /* Ensures padding doesn't cause overflow */
-            overflow: hidden; /* Prevents overflow issues */
+            line-height: 1.4;
+            box-sizing: border-box;
             border-radius: 15px;
-            word-wrap: break-word; /* Ensures text breaks correctly */
         }
-
         .project-card:hover .project-summary {
             opacity: 1;
         }
@@ -167,9 +168,9 @@
             font-size: 20px;
             font-weight: 500;
             padding: 15px;
-            color: #333; /* Dark text */
+            color: #333;
             text-align: center;
-            background-color: #f9f9f9; /* Same solid background */
+            background-color: #f9f9f9;
             border-top: 1px solid #e0e0e0;
             border-radius: 0 0 15px 15px;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -179,8 +180,8 @@
             width: 100%;
         }
         .project-card:hover .project-title {
-            background-color: #ededed; /* Match background color change */
-            color: #111; /* Darker text color on hover */
+            background-color: #ededed;
+            color: #111;
         }
 
         /* Lightbox Styles */
@@ -300,22 +301,26 @@
     <h2>Portfolio - Year 1</h2>
     <div class="grid">
         <div class="project-card" onclick="openLightbox('year1', 'Structural_Studies')">
-            <iframe src="year1/Structural_Studies_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year1/Structural_Study_cover.jpg" alt="Structural Studies Cover" class="project-cover">
             <div class="project-summary">This project explores innovative structural designs and materials, aiming to enhance sustainability.</div>
             <p class="project-title">Structural Studies</p>
         </div>
         <div class="project-card" onclick="openLightbox('year1', 'Wooloomooloo_Wharf_Redesign')">
-            <iframe src="year1/Wooloomooloo_Wharf_Redesign_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year1/Wooloomooloo_Wharf_Redesign_cover.jpg" alt="Wooloomooloo Wharf Redesign Cover" class="project-cover">
             <div class="project-summary">Redesign of the Wooloomooloo Wharf focusing on modern aesthetics and functionality.</div>
             <p class="project-title">Wooloomooloo Wharf Redesign</p>
         </div>
         <div class="project-card" onclick="openLightbox('year1', 'Design_Study')">
-            <iframe src="year1/Design_Study_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year1/Design_Study_cover.jpg" alt="Design Study Cover" class="project-cover">
             <div class="project-summary">A study of design principles applied to various architectural challenges.</div>
             <p class="project-title">Design Study</p>
         </div>
         <div class="project-card" onclick="openLightbox('year1', 'Domestic_Rituals')">
-            <iframe src="year1/Domestic_Rituals_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year1/Domestic_Rituals_cover.jpg" alt="Domestic Rituals Cover" class="project-cover">
             <div class="project-summary">An exploration of domestic spaces and how rituals shape architectural design.</div>
             <p class="project-title">Domestic Rituals</p>
         </div>
@@ -324,32 +329,38 @@
     <h2>Portfolio - Year 2</h2>
     <div class="grid">
         <div class="project-card" onclick="openLightbox('year2', 'Material_Studies')">
-            <iframe src="year2/Material_Studies_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year2/Material_Studies_cover.jpg" alt="Material Studies Cover" class="project-cover">
             <div class="project-summary">An in-depth study of materials used in modern architecture and their applications.</div>
             <p class="project-title">Material Studies</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Apparatus_Design')">
-            <iframe src="year2/Apparatus_Design_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year2/Apparatus_Design_cover.jpg" alt="Apparatus Design Cover" class="project-cover">
             <div class="project-summary">Designing functional apparatus that blend seamlessly into architectural spaces.</div>
             <p class="project-title">Apparatus Design</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Scanning')">
-            <iframe src="year2/Scanning_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year2/Scanning_cover.jpg" alt="Scanning Cover" class="project-cover">
             <div class="project-summary">Exploring scanning techniques for capturing and analyzing architectural structures.</div>
             <p class="project-title">Scanning</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Technical_Orthographics')">
-            <iframe src="year2/Technical_Orthographics_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year2/Technical_Orthographics_cover.jpg" alt="Technical Orthographics Cover" class="project-cover">
             <div class="project-summary">Technical orthographic drawings showcasing detailed architectural designs.</div>
             <p class="project-title">Technical Orthographics</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Material_Archive')">
-            <iframe src="year2/Material_Archive_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year2/Material_Archive_cover.jpg" alt="Material Archive Cover" class="project-cover">
             <div class="project-summary">A comprehensive archive of materials and their use in architectural projects.</div>
             <p class="project-title">Material Archive</p>
         </div>
         <div class="project-card" onclick="openLightbox('year2', 'Student_Housing_Project')">
-            <iframe src="year2/Student_Housing_Project_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year2/Student_Housing_Project_cover.jpg" alt="Student Housing Project Cover" class="project-cover">
             <div class="project-summary">Designing student housing with a focus on community and sustainability.</div>
             <p class="project-title">Student Housing Project</p>
         </div>
@@ -358,17 +369,20 @@
     <h2>Portfolio - Year 3</h2>
     <div class="grid">
         <div class="project-card" onclick="openLightbox('year3', 'School_Design')">
-            <iframe src="year3/School_Design_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year3/School_Design_cover.jpg" alt="School Design Cover" class="project-cover">
             <div class="project-summary">Innovative school design that integrates modern teaching methodologies.</div>
             <p class="project-title">School Design</p>
         </div>
         <div class="project-card" onclick="openLightbox('year3', 'Site_Master_Planning')">
-            <iframe src="year3/Site_Master_Planning_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year3/Site_Master_Planning_cover.jpg" alt="Site Master Planning Cover" class="project-cover">
             <div class="project-summary">Master planning for a large site, balancing urban and natural environments.</div>
             <p class="project-title">Site Master Planning</p>
         </div>
         <div class="project-card" onclick="openLightbox('year3', 'Entertainment_Complex')">
-            <iframe src="year3/Entertainment_Complex_portfolio.pdf"></iframe>
+            <!-- Use an image as the cover -->
+            <img src="year3/Entertainment_Complex_cover.jpg" alt="Entertainment Complex Cover" class="project-cover">
             <div class="project-summary">Designing a modern entertainment complex with multiple facilities.</div>
             <p class="project-title">Entertainment Complex</p>
         </div>
@@ -415,6 +429,7 @@
 
 </body>
 </html>
+
 
 
 
