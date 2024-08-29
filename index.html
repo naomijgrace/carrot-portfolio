@@ -16,45 +16,43 @@
             transition: background-color 0.5s ease;
             background-size: cover;
         }
-        header {
+       header {
             background-color: #1a1a1a;
             color: white;
-            padding: 20px 40px; /* Slightly increased padding for a more balanced header */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 20px 10px;
+            text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: relative;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        
-        header::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, #555, #222); /* Architectural element - gradient line */
+        header.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
         header h1 {
-            font-size: 36px; /* Larger font size for the name */
-            margin: 0;
+            font-size: 32px;
+            margin: 5px 0;
             letter-spacing: 2px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
-            flex: 1;
-            text-align: left; /* Align name to the left */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: color 0.3s ease;
         }
-        
+        header p {
+            font-size: 18px;
+            margin: 5px 0;
+            font-weight: 300;
+            color: #bbb;
+            transition: color 0.3s ease;
+        }
         header .contact-info {
+            margin-top: 10px;
             font-size: 14px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px; /* Increased gap for a balanced middle section */
-            flex: 2;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        
         header .contact-info a {
             color: white;
             text-decoration: none;
@@ -65,17 +63,17 @@
             display: inline-block;
             border: 2px solid transparent;
         }
-        
         header .contact-info a:hover {
             background-color: #555;
             transform: scale(1.1);
             border: 2px solid #777;
         }
-        
         header .separator {
-            width: 1px;
-            height: 20px;
+            display: inline-block;
+            width: 2px;
+            height: 15px;
             background-color: #666;
+            margin: 0 10px;
         }
         section {
             margin: 50px 20px;
